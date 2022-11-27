@@ -1,0 +1,16 @@
+const express = require("express");
+const comics = require("../controllers/comic.controller");
+
+const router = express.Router();
+
+router.route("/").get(comics.findAll).post(comics.create);
+
+router.route("/favorite").get(comics.findAllFavorite);
+
+router
+  .route("/:id")
+  .get(comics.findOne)
+  .put(comics.update)
+  .delete(comics.delete);
+
+module.exports = router;
